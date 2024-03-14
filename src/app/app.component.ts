@@ -2,11 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {LocationService} from "./location.service";
 import {HapticService} from "./haptic.service";
+import {DataService} from "./data.service";
 import {NgForOf} from "@angular/common";
+import {FormsModule} from "@angular/forms";
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgForOf],
+  imports: [RouterOutlet, NgForOf, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -14,8 +17,9 @@ export class AppComponent implements OnInit{
   title = 'Test';
   coords:any = []
   public distance: number = 0;
+  data_input = "";
 
-  constructor(protected LocationService:LocationService, protected HapticService:HapticService) {}
+  constructor(protected LocationService:LocationService, protected HapticService:HapticService, protected dataService:DataService) {}
 
   printCoord(){
     this.coords = this.LocationService.watchPosition()

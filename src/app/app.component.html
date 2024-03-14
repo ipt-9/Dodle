@@ -18,4 +18,11 @@
   <button (click)="this.HapticService.playSound('huh')">Play huh</button>
 </div>
 
+<div>
+  <h1>Data test</h1>
+  <input [(ngModel)]="data_input">
+  <button (click)="this.dataService.saveData('key', data_input)" >Save</button>
+  <p>Read Data: {{this.dataService.readData("test")}}</p>
+</div>
+
 <router-outlet />
