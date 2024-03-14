@@ -1,6 +1,5 @@
 <div>
   <h1>Geolocation Test</h1>
-  <hr>
   <p>{{Math.round(LocationService.distancea)}}</p>
   <div>
     <button (click)="printCoord()">Print Current Location</button>
@@ -9,10 +8,14 @@
   </div>
 </div>
 
+<hr>
+
 <div>
   <h1>Haptic Tests</h1>
   <button (click)="this.HapticService.shortVibrate()">Short Vibrate</button>
-  <button (click)="this.HapticService.longVibrate()">Short Vibrate</button>
+  <button (click)="this.HapticService.longVibrate()">long Vibrate</button>
+  <button (click)="this.HapticService.playSound('test')">Play Gugus</button>
+  <button (click)="this.HapticService.playSound('huh')">Play huh</button>
 </div>
 
 <router-outlet />
