@@ -1,28 +1,3 @@
-<div>
-  <h1>Geolocation Test</h1>
-  <p>{{Math.round(LocationService.distancea)}}</p>
-  <div>
-    <button (click)="printCoord()">Print Current Location</button>
-    <button (click)="stopPrint()">Stop Print Current Location</button>
-    <p *ngFor="let coord of coords">lat: {{coord.coords.latitude}}, long: {{coord.coords.longitude}} at {{coord.timestamp}}</p>
-  </div>
-</div>
 
-<hr>
-
-<div>
-  <h1>Haptic Tests</h1>
-  <button (click)="this.HapticService.shortVibrate()">Short Vibrate</button>
-  <button (click)="this.HapticService.longVibrate()">long Vibrate</button>
-  <button (click)="this.HapticService.playSound('test')">Play Gugus</button>
-  <button (click)="this.HapticService.playSound('huh')">Play huh</button>
-</div>
-
-<div>
-  <h1>Data test</h1>
-  <input [(ngModel)]="data_input">
-  <button (click)="this.dataService.saveData('key', data_input)" >Save</button>
-  <p>Read Data: {{this.dataService.readData("test")}}</p>
-</div>
 
 <router-outlet />
