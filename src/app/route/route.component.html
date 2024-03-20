@@ -1,2 +1,20 @@
-<h1>Route - {{routeName}}</h1>
+<h1>Route - {{id}}</h1>
 <h2>Question {{currentQuestion + 1}}</h2>
+
+<p>Go to {{questions[0][currentQuestion]['lat']}}, {{questions[0][currentQuestion]['lon']}}</p>
+<p>{{Math.round(locationService.distancea)}} meters away, must be under 20 meters away from destination</p>
+
+<div *ngIf="!(locationService.distancea>20)">
+  <form>
+    <p>{{questions[0][currentQuestion]['question']}}</p>
+    <div *ngFor="let ans of multipleChoiseAnswers">
+      <input (change)="this.changeAnswer(ans)" [disabled]="this.questionDone" type="radio" value="{{ans.isCorrect}}" name="answer">{{ans.ans}}
+    </div>
+  </form>
+  <input [disabled]="this.questionDone" (click)="this.checkAnswer()" type="button" value="Submit">
+  <p *ngIf="this.questionDone">Correct answer!</p>
+</div>
+
+<button [disabled]="(locationService.distancea>20 && !this.questionDone)" (click)='nextQuestion()'>Continue</button>
+
+<button (click)='nextQuestion()'>Skip</button>

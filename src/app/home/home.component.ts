@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit() {
-    this.http.get<any>("https://api.dodle-bmsd21a.bbzwinf.ch/api.php").subscribe(data=>{
+    this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php").subscribe(data=>{
       this.routes.push(data)
     })
     console.log(this.routes)

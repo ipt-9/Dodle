@@ -18,9 +18,7 @@ import {HapticService} from "../haptic.service";
 })
 export class TestComponent implements OnInit{
 
-  title = 'Test';
   coords:any = []
-  public distance: number = 0;
   data_input = "";
 
   constructor(protected LocationService:LocationService, protected HapticService:HapticService, protected dataService:DataService) {}

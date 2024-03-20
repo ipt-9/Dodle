@@ -18,11 +18,12 @@ export class LocationService implements OnInit{
   }
 
   watchId = 0
+  watchIdDistance =0
 
   watchPosition(){
     this.watchId = navigator.geolocation.watchPosition(
         (data)=>{
-        this.coords.push(data)
+          this.coords.push(data)
         },
       ()=>{},
       { enableHighAccuracy: true},
@@ -31,10 +32,9 @@ export class LocationService implements OnInit{
   }
 
   distanceFromCurrentPosition(coord: GeolocationPosition){
-    navigator.geolocation.watchPosition(
+    this.watchIdDistance = navigator.geolocation.watchPosition(
       (data)=>{
         this.distancea= (this.haversine({latitude: data.coords.latitude, longitude: data.coords.longitude}, coord.coords)) * 1000
-        console.log(data)
       },
       ()=>{},
       { enableHighAccuracy: true},
@@ -43,6 +43,7 @@ export class LocationService implements OnInit{
 
   stopWatch(){
     navigator.geolocation.clearWatch(this.watchId)
+    navigator.geolocation.clearWatch(this.watchIdDistance)
   }
 
   haversine(coord1: Location, coord2:Location)

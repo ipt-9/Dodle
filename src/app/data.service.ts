@@ -16,9 +16,4 @@ export class DataService {
   readData(key:string){
     return this.cookieService.get(key)
   }
-
-  getRoutes(){
-    return this.http.get<any>("https://api.dodle-bmsd21a.bbzwinf.ch/api.php");
-  }
-
 }
