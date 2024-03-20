@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 
 import {NgForOf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
-
+import {HttpClient} from "@angular/common/http";
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -12,5 +12,5 @@ import {FormsModule} from "@angular/forms";
   styleUrl: './app.component.css'
 })
 export class AppComponent{
-
+  title = "hello"
 }

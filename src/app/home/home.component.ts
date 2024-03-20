@@ -1,15 +1,32 @@
 import {Component, OnInit} from '@angular/core';
-
+import {RouterLink} from "@angular/router";
+import {routes} from "../app.routes";
+import {HttpClient} from "@angular/common/http";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [
+    RouterLink,
+    NgForOf,
+
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit{
-  ngOnInit() {
-    console.log("lmao")
+  routes: any[] = [];
+
+  constructor(private http: HttpClient) {
   }
+
+  ngOnInit() {
+    this.http.get<any>("https://api.dodle-bmsd21a.bbzwinf.ch/api.php").subscribe(data=>{
+      this.routes.push(data)
+    })
+    console.log(this.routes)
+  }
+
+  protected readonly JSON = JSON;
 }
