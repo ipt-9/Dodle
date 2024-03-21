@@ -1,7 +1,7 @@
-<h1>Route - {{id}}</h1>
+<h1>Route - {{this.id}}</h1>
 <h2>Question {{currentQuestion + 1}}</h2>
 
-<p>Go to {{questions[0][currentQuestion]['lat']}}, {{questions[0][currentQuestion]['lon']}}</p>
+<p>Go to {{this.questions[0][this.currentQuestion]['lat']}}, {{this.questions[0][this.currentQuestion]['lon']}}</p>
 <p>{{Math.round(locationService.distancea)}} meters away, must be under 20 meters away from destination</p>
 <button (click)="locationService.distancea = 0">In Radius</button>
 

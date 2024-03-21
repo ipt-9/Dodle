@@ -26,7 +26,7 @@ export class RouteComponent implements OnInit{
   questionDone = false;
   inRadius: boolean = false;
 
-  public id: number | null | undefined;
+  public id: number = 0;
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, protected locationService: LocationService) {
   }
@@ -38,7 +38,7 @@ export class RouteComponent implements OnInit{
       this.router.navigate(["/"])
     }
 
-    this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php?id=0").subscribe(data=>{
+    this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php?id="+this.id).subscribe(data=>{
       this.questions.push(data)
       this.nextQuestion()
     })
