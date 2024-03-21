@@ -1,10 +1,10 @@
 <h1>Dodle</h1>
 <h2>Erlebe die Schweiz bla bla</h2>
 
-<div *ngFor="let route of routes">
+<div *ngFor="let route of routes[0]">
   <hr>
-  <h1>{{route[0]['name']}}</h1>
-  <h2>{{route[0]['desc']}}</h2>
-  <h3>Distanz: {{route[0]['distance']}}km</h3>
-  <a routerLink="/route/{{route[0]['id']}}">Start Hier</a>
+  <h1>{{route['name']}}</h1>
+  <h2>{{route['desc']}}</h2>
+  <h3>Distanz: {{route['distance']}}km</h3>
+  <a routerLink="/route/{{route['id']}}">Start Hier</a>
 </div>
