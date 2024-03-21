@@ -3,8 +3,9 @@
 
 <p>Go to {{questions[0][currentQuestion]['lat']}}, {{questions[0][currentQuestion]['lon']}}</p>
 <p>{{Math.round(locationService.distancea)}} meters away, must be under 20 meters away from destination</p>
+<button (click)="locationService.distancea = 0">In Radius</button>
 
-<div *ngIf="!(locationService.distancea>20)">
+<div *ngIf="(!(locationService.distancea>20) || this.inRadius)">
   <form>
     <p>{{questions[0][currentQuestion]['question']}}</p>
     <div *ngFor="let ans of multipleChoiseAnswers">

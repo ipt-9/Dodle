@@ -24,6 +24,7 @@ export class RouteComponent implements OnInit{
   multipleChoiseAnswers: any = []
   currentAnswer = false;
   questionDone = false;
+  inRadius: boolean = false;
 
   public id: number | null | undefined;
 
@@ -47,6 +48,7 @@ export class RouteComponent implements OnInit{
     this.currentQuestion++
     this.currentAnswer = false
     this.questionDone = false
+    this.inRadius = false
 
     if(this.currentQuestion>=this.questions[0].length){
       this.router.navigate(["/"])
