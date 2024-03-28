@@ -20,11 +20,12 @@ import {FormsModule} from "@angular/forms";
 export class RouteComponent implements OnInit{
   routeName: string = "Default"
   currentQuestion: number = -1
-  questions:any = []
+  question: any;
   multipleChoiseAnswers: any = []
   currentAnswer = false;
   questionDone = false;
-  inRadius: boolean = false;
+  locationName: string | undefined;
+  isReady = false
 
   public id: number = 0;
 
@@ -32,14 +33,25 @@ export class RouteComponent implements OnInit{
   }
 
   ngOnInit() {
+    let questions:any = []
     this.id = Number(this.route.snapshot.paramMap.get('id'));
 
     if(isNaN(this.id)){
       this.router.navigate(["/"])
     }
 
+    //get Name
+    this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php").subscribe(data=>{
+      for(let i = 0; i < data.length; i++){
+        if(data[i]['id'] == this.id){
+          this.routeName = data[i]['name']
+        }
+      }
+    })
+
     this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php?id="+this.id).subscribe(data=>{
-      this.questions.push(data)
+      questions.push(data)
+      this.question = questions[0]
       this.nextQuestion()
     })
   }
@@ -48,25 +60,26 @@ export class RouteComponent implements OnInit{
     this.currentQuestion++
     this.currentAnswer = false
     this.questionDone = false
-    this.inRadius = false
 
-    if(this.currentQuestion>=this.questions[0].length){
+    this.locationName = this.question[this.currentQuestion]['locationName']
+
+    if(this.currentQuestion>=this.question.length){
       this.router.navigate(["/"])
     }
 
 
     this.multipleChoiseAnswers = [
-      {ans: this.questions[0][this.currentQuestion]['ans'], isCorrect: true},
-      {ans: this.questions[0][this.currentQuestion]['fillers'][0], isCorrect: false},
-      {ans: this.questions[0][this.currentQuestion]['fillers'][1], isCorrect: false},
-      {ans: this.questions[0][this.currentQuestion]['fillers'][2], isCorrect: false},
+      {ans: this.question[this.currentQuestion]['ans'], isCorrect: true},
+      {ans: this.question[this.currentQuestion]['fillers'][0], isCorrect: false},
+      {ans: this.question[this.currentQuestion]['fillers'][1], isCorrect: false},
+      {ans: this.question[this.currentQuestion]['fillers'][2], isCorrect: false},
     ]
 
     this.multipleChoiseAnswers = this.shuffle(this.multipleChoiseAnswers)
 
     this.locationService.stopWatch()
     this.locationService.watchPosition()
-    this.locationService.distanceFromCurrentPosition({timestamp:0, coords: {latitude: this.questions[0][this.currentQuestion]['lat'],longitude: this.questions[0][this.currentQuestion]['lon'],accuracy: 0, altitude: 0, altitudeAccuracy: 0, speed:0, heading:0}})
+    this.locationService.distanceFromCurrentPosition({timestamp:0, coords: {latitude: this.question[this.currentQuestion]['lat'],longitude: this.question[this.currentQuestion]['lon'],accuracy: 0, altitude: 0, altitudeAccuracy: 0, speed:0, heading:0}})
   }
 
   changeAnswer(answer: any){

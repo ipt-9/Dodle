@@ -10,7 +10,7 @@ import {AppComponent} from "./app.component";
 export class LocationService implements OnInit{
 
   public coords:GeolocationPosition[] = []
-  public distancea:number = 0
+  public distancea= 1000
 
   constructor() { }
 
@@ -18,7 +18,7 @@ export class LocationService implements OnInit{
   }
 
   watchId = 0
-  watchIdDistance =0
+  watchIdDistance = 0
 
   watchPosition(){
     this.watchId = navigator.geolocation.watchPosition(
@@ -67,6 +67,12 @@ export class LocationService implements OnInit{
     let rad:number = 6371;
     let c:number = 2 * Math.asin(Math.sqrt(a));
     return rad * c;
+  }
+
+  arrowRotation(){
+    navigator.geolocation.getCurrentPosition(data => {
+      console.log(data)
+    })
   }
 
 }
