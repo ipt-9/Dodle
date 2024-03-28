@@ -69,4 +69,10 @@ export class LocationService implements OnInit{
     return rad * c;
   }
 
+  arrowRotation(){
+    navigator.geolocation.getCurrentPosition(data => {
+      console.log(data)
+    })
+  }
+
 }

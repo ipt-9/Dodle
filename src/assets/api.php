@@ -40,6 +40,7 @@ if($id != NULL){
 				$response[$i]['id'] = $row['_id'];
 				$response[$i]['name'] = $row['name'];
 				$response[$i]['desc'] = $row['desc'];
+				$response[$i]['longDesc'] = $row['longDesc'];
 				$response[$i]['image'] = $row['image'];
 				$response[$i]['distance'] = $row['distance'];
 				$i++;
