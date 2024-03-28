@@ -16,4 +16,8 @@ export class DataService {
   readData(key:string){
     return this.cookieService.get(key)
   }
+
+  getRoutes(){
+
+  }
 }

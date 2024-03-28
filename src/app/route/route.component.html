@@ -1,11 +1,11 @@
 <h1>Route - {{this.routeName}}</h1>
-<h2>Question {{currentQuestion + 1}}</h2>
+<h2>Question - {{this.locationName}}</h2>
 
 <p>Go to {{this.question[this.currentQuestion]['lat']}}, {{this.question[this.currentQuestion]['lon']}}</p>
 <p>{{Math.round(locationService.distancea)}} meters away, must be under 20 meters away from destination</p>
 <button (click)="locationService.distancea = 0">In Radius</button>
 
-<div *ngIf="(!(locationService.distancea>20) || this.inRadius)">
+<div *ngIf="question != undefined && this.locationService.distancea<20">
   <form>
     <p>{{question[currentQuestion]['question']}}</p>
     <div *ngFor="let ans of multipleChoiseAnswers">
