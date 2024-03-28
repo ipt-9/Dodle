@@ -24,7 +24,8 @@ export class RouteComponent implements OnInit{
   multipleChoiseAnswers: any = []
   currentAnswer = false;
   questionDone = false;
-  inRadius: boolean = false;
+  locationName: string | undefined;
+  isReady = false
 
   public id: number = 0;
 
@@ -39,12 +40,6 @@ export class RouteComponent implements OnInit{
       this.router.navigate(["/"])
     }
 
-    this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php?id="+this.id).subscribe(data=>{
-      questions.push(data)
-      this.question = questions[0]
-      this.nextQuestion()
-    })
-
     //get Name
     this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php").subscribe(data=>{
       for(let i = 0; i < data.length; i++){
@@ -53,13 +48,20 @@ export class RouteComponent implements OnInit{
         }
       }
     })
+
+    this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php?id="+this.id).subscribe(data=>{
+      questions.push(data)
+      this.question = questions[0]
+      this.nextQuestion()
+    })
   }
 
   nextQuestion(){
     this.currentQuestion++
     this.currentAnswer = false
     this.questionDone = false
-    this.inRadius = false
+
+    this.locationName = this.question[this.currentQuestion]['locationName']
 
     if(this.currentQuestion>=this.question.length){
       this.router.navigate(["/"])
