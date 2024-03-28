@@ -18,6 +18,7 @@ if($id != NULL){
 				$response[$i]['order'] = $row['order'];
 				$response[$i]['question'] = $row['question'];
 				$response[$i]['ans'] = $row['ans'];
+				$response[$i]['locationName'] = $row['locationName'];
 				$response[$i]['fillers'] = [$row['q1'],$row['q2'],$row['q3']];
 				$i++;
 			}
