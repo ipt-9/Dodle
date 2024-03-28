@@ -3,7 +3,6 @@
 
 <p>Go to {{this.question[this.currentQuestion]['lat']}}, {{this.question[this.currentQuestion]['lon']}}</p>
 <p>{{Math.round(locationService.distancea)}} meters away, must be under 20 meters away from destination</p>
-<button (click)="locationService.distancea = 0">In Radius</button>
 
 <div *ngIf="question != undefined && this.locationService.distancea<20">
   <form>
@@ -16,6 +15,8 @@
   <p *ngIf="this.questionDone">Correct answer!</p>
 </div>
 
-<button [disabled]="(locationService.distancea>20 && !this.questionDone)" (click)='nextQuestion()'>Continue</button>
+<img src="assets/arrow.png" style="width: 10em; display: block; transform: rotateX(55deg) rotateZ({{this.arrowRotation}}deg)">
 
+<button (click)="locationService.distancea = 0">In Radius</button>
+<button [disabled]="(locationService.distancea>20 && !this.questionDone)" (click)='nextQuestion()'>Continue</button>
 <button (click)='nextQuestion()'>Skip</button>

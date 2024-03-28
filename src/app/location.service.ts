@@ -11,6 +11,7 @@ export class LocationService implements OnInit{
 
   public coords:GeolocationPosition[] = []
   public distancea= 1000
+  public rotation:any[] = [];
 
   constructor() { }
 
@@ -70,9 +71,7 @@ export class LocationService implements OnInit{
   }
 
   arrowRotation(){
-    navigator.geolocation.getCurrentPosition(data => {
-      console.log(data)
-    })
+    return 1
   }
 
 }
