@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+.card-img{
+  opacity: 0;
+}
+
+.bottom{
+  position: absolute !important;
+  bottom: 0 !important;
+}
