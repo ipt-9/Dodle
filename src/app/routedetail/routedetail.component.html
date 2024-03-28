@@ -1,1 +1,10 @@
-<h1>{{route['name']}}</h1>
+<p>{{this.id}}</p>
+<p>{{this.name}}</p>
+<p>{{this.desc}}</p>
+<p>{{this.longDesc}}</p>
+<p>{{this.image}}</p>
+<p>{{this.distance}}</p>
+
+<img src="https://dodle-bmsd21a.bbzwinf.ch/assets/citylogo/{{this.image}}.jpg">
+
+<button routerLink="/introduction/{{this.id}}">Continue</button>
