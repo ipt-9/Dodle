@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {LocationService} from "../location.service";
 import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-route',
@@ -25,7 +26,7 @@ export class RouteComponent implements OnInit{
   currentAnswer = false;
   questionDone = false;
   locationName: string | undefined;
-  isReady = false
+  arrowRotation: any = 0
 
   public id: number = 0;
 
@@ -34,8 +35,9 @@ export class RouteComponent implements OnInit{
 
   ngOnInit() {
     let questions:any = []
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
 
+    //get ID
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
     if(isNaN(this.id)){
       this.router.navigate(["/"])
     }
@@ -49,6 +51,7 @@ export class RouteComponent implements OnInit{
       }
     })
 
+    //get Question Data
     this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php?id="+this.id).subscribe(data=>{
       questions.push(data)
       this.question = questions[0]
@@ -61,6 +64,7 @@ export class RouteComponent implements OnInit{
     this.currentAnswer = false
     this.questionDone = false
 
+    //name
     this.locationName = this.question[this.currentQuestion]['locationName']
 
     if(this.currentQuestion>=this.question.length){
