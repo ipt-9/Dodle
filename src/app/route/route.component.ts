@@ -84,7 +84,7 @@ export class RouteComponent implements OnInit{
 
   changeAnswer(answer: any){
     if(answer.isCorrect){
-      this.currentAnswer = true
+      this.currentAnswer = true;
     }
   }
 

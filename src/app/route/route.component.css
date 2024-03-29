@@ -1,0 +1,76 @@
+/* Grundlayout */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+}
+
+/* Überschriften */
+h1, h2 {
+  color: #007bff;
+  text-align: center;
+}
+
+/* Abstand und Zentrierung für das Koordinaten-Paragraph */
+.coordinates {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Button-Gruppe */
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Stilisierte Buttons für die Auswahl */
+.choice-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.choice-button:hover {
+  background-color: #0056b3;
+}
+
+.choice-button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Antwort-Buttons statt Radio-Buttons */
+.answer-button {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #007bff;
+  color: #007bff;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.answer-button:checked,
+.answer-button:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: column;
+  }
+}

@@ -1,3 +1,4 @@
+<div class="container">
 <h1>Route - {{this.routeName}}</h1>
 <h2>Question - {{this.locationName}}</h2>
 
@@ -9,7 +10,7 @@
   <form>
     <p>{{question[currentQuestion]['question']}}</p>
     <div *ngFor="let ans of multipleChoiseAnswers">
-      <input (change)="this.changeAnswer(ans)" [disabled]="this.questionDone" type="radio" value="{{ans.isCorrect}}" name="answer">{{ans.ans}}
+      <button class="choice-button" (click)="changeAnswer(ans)" [disabled]="questionDone">{{ans.ans}}</button>
     </div>
   </form>
   <input [disabled]="this.questionDone" (click)="this.checkAnswer()" type="button" value="Submit">
@@ -19,3 +20,4 @@
 <button [disabled]="(locationService.distancea>20 && !this.questionDone)" (click)='nextQuestion()'>Continue</button>
 
 <button (click)='nextQuestion()'>Skip</button>
+</div>
