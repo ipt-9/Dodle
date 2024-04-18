@@ -1,1 +1,12 @@
-<h1>{{route['name']}}</h1>
+<div class="route-details container my-5">
+  <h1 class="route-title">{{ this.name }}</h1>
+  <div class="image-container">
+    <img src="https://dodle-bmsd21a.bbzwinf.ch/assets/citylogo/{{ this.image }}.jpg" alt="{{ this.name }}" class="route-image">
+  </div>
+  <p class="route-desc">{{ this.longDesc }}</p>
+  <div class="course-info">
+    <p><strong>Course duration:</strong> {{ this.distance }}</p>
+    <p><strong>Location:</strong> Luzern Bahnhof</p>
+  </div>
+  <button class="btn btn-custom btn-lg" routerLink="/introduction/{{ this.id }}">Continue</button>
+</div>

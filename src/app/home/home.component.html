@@ -4,14 +4,14 @@
   <div class="container mt-5">
   <div class="row">
     <div *ngFor="let route of routes[0]" class="col-lg-4 col-md-6 mb-4">
-      <a routerLink="/route/{{route['id']}}" class="text-decoration-none">
+      <a routerLink="/routedetail/{{route['id']}}" class="text-decoration-none">
       <div class="card bg-dark text-white h-100" style="background: linear-gradient(transparent 0%, black 100%), url('https://dodle-bmsd21a.bbzwinf.ch/assets/citylogo/{{route['image']}}.jpg'); background-size: contain">
         <img class="card-img img-fluid" src="https://dodle-bmsd21a.bbzwinf.ch/assets/citylogo/{{route['image']}}.jpg" alt="Card image">
         <div class="card-img-overlay bottom">
           <div class="bottom">
-            <h5 class="card-title">{{route['name']}}</h5>
-            <p class="card-text">{{route['desc']}}</p>
-            <p class="card-text">Distanz: {{route['distance']}}km</p>
+            <h3 class="card-title  bold">{{route['name']}}</h3>
+            <p class="card-text lh-sm">{{route['desc']}}</p>
+            <p class="card-text pb-2">Distanz: {{route['distance']}}km</p>
           </div>
         </div>
       </div>
