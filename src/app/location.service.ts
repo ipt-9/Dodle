@@ -10,8 +10,8 @@ import {AppComponent} from "./app.component";
 export class LocationService implements OnInit{
 
   public coords:GeolocationPosition[] = []
-  public distancea= 1000
-  public rotation:any[] = [];
+  public distance= 1000
+  public rotation:any
 
   constructor() { }
 
@@ -35,7 +35,19 @@ export class LocationService implements OnInit{
   distanceFromCurrentPosition(coord: GeolocationPosition){
     this.watchIdDistance = navigator.geolocation.watchPosition(
       (data)=>{
-        this.distancea= (this.haversine({latitude: data.coords.latitude, longitude: data.coords.longitude}, coord.coords)) * 1000
+        this.distance = (this.haversine({latitude: data.coords.latitude, longitude: data.coords.longitude}, coord.coords)) * 1000
+        let a = [coord.coords.latitude-data.coords.latitude,coord.coords.longitude-data.coords.longitude]
+        let b = [0, 1]
+        this.rotation =
+          ((a[0]*b[0]+a[1]*b[1]) / (
+            (Math.sqrt(Math.pow(a[0],2)+Math.pow(a[1],2)))*
+            (Math.sqrt(Math.pow(b[0],2)+Math.pow(b[1],2)))
+          )
+          ) * (180 / Math.PI) + 90
+          if(coord.coords.latitude>data.coords.latitude){
+            this.rotation = 360 - this.rotation
+          }
+
       },
       ()=>{},
       { enableHighAccuracy: true},
@@ -69,9 +81,4 @@ export class LocationService implements OnInit{
     let c:number = 2 * Math.asin(Math.sqrt(a));
     return rad * c;
   }
-
-  arrowRotation(){
-    return 1
-  }
-
 }

@@ -3,9 +3,9 @@
 <h2>Question - {{this.locationName}}</h2>
 
 <p>Go to {{this.question[this.currentQuestion]['lat']}}, {{this.question[this.currentQuestion]['lon']}}</p>
-<p>{{Math.round(locationService.distancea)}} meters away, must be under 20 meters away from destination</p>
+<p>{{Math.round(locationService.distance)}} meters away, must be under 20 meters away from destination</p>
 
-<div *ngIf="question != undefined && this.locationService.distancea<20">
+<div *ngIf="question != undefined && this.locationService.distance<20">
   <form>
     <p>{{question[currentQuestion]['question']}}</p>
     <div *ngFor="let ans of multipleChoiseAnswers">
@@ -16,9 +16,11 @@
   <p *ngIf="this.questionDone">Correct answer!</p>
 </div>
 
-<img src="assets/arrow.png" style="width: 10em; display: block; transform: rotateX(55deg) rotateZ({{this.arrowRotation}}deg)">
+<img src="assets/arrow.png" style="width: 10em; display: block; transform: rotateX(0deg) rotateZ({{this.locationService.rotation+this.orientation['alpha']}}deg)"> <!-- Rotation apply -->
 
-<button (click)="locationService.distancea = 0">In Radius</button>
-<button [disabled]="(locationService.distancea>20 && !this.questionDone)" (click)='nextQuestion()'>Continue</button>
+<button (click)="locationService.distance = 0">In Radius</button>
+<button [disabled]="(locationService.distance>20 && !this.questionDone)" (click)='nextQuestion()'>Continue</button>
 <button (click)='nextQuestion()'>Skip</button>
+
+  <p>{{locationService.rotation}}</p>
 </div>
