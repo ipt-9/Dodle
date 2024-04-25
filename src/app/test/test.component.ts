@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, isStandalone, OnInit} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DataService} from "../data.service";
 import {LocationService} from "../location.service";
 import {HapticService} from "../haptic.service";
+import {GoogleMapsModule} from "@angular/google-maps";
 
 @Component({
   selector: 'app-test',
@@ -11,7 +12,8 @@ import {HapticService} from "../haptic.service";
   imports: [
     NgForOf,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    GoogleMapsModule
   ],
   templateUrl: './test.component.html',
   styleUrl: './test.component.css'
@@ -21,7 +23,7 @@ export class TestComponent implements OnInit{
   coords:any = []
   data_input = "";
 
-  constructor(protected LocationService:LocationService, protected HapticService:HapticService, protected dataService:DataService) {}
+  constructor(protected LocationService:LocationService, protected HapticService:HapticService, protected dataService:DataService, private google: GoogleMapsModule) {}
 
   printCoord(){
     this.coords = this.LocationService.watchPosition()
@@ -35,9 +37,5 @@ export class TestComponent implements OnInit{
     this.LocationService.stopWatch()
   }
 
-  protected readonly stop = stop;
-  protected readonly Location = Location;
-  protected readonly GeolocationPosition = GeolocationPosition;
-  protected readonly Geolocation = Geolocation;
   protected readonly Math = Math;
 }

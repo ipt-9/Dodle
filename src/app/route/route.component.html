@@ -16,11 +16,8 @@
   <p *ngIf="this.questionDone">Correct answer!</p>
 </div>
 
-<img src="assets/arrow.png" style="width: 10em; display: block; transform: rotateX(0deg) rotateZ({{this.locationService.rotation+this.orientation['alpha']}}deg)"> <!-- Rotation apply -->
-
 <button (click)="locationService.distance = 0">In Radius</button>
 <button [disabled]="(locationService.distance>20 && !this.questionDone)" (click)='nextQuestion()'>Continue</button>
 <button (click)='nextQuestion()'>Skip</button>
 
-  <p>{{locationService.rotation}}</p>
 </div>

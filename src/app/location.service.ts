@@ -36,6 +36,7 @@ export class LocationService implements OnInit{
     this.watchIdDistance = navigator.geolocation.watchPosition(
       (data)=>{
         this.distance = (this.haversine({latitude: data.coords.latitude, longitude: data.coords.longitude}, coord.coords)) * 1000
+
         let a = [coord.coords.latitude-data.coords.latitude,coord.coords.longitude-data.coords.longitude]
         let b = [0, 1]
         this.rotation =

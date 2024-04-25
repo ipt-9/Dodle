@@ -26,29 +26,12 @@ export class RouteComponent implements OnInit{
   currentAnswer = false;
   questionDone = false;
   locationName: string | undefined;
-  arrowRotation: any = 0
 
   public id: number = 0;
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, protected locationService: LocationService) {
-    window.addEventListener("deviceorientation", (event) => {
-      this.parseOrientation(event.alpha, event.beta, event.gamma);
-    });
   }
 
-  parseOrientation(alpha:any, beta:any, gamma:any) {
-    this.orientation = {
-      alpha: alpha,
-      beta: beta,
-      gamma: gamma
-    }
-  }
-
-  public orientation: any = {
-    alpha: Number,
-    beta: Number,
-    gamma: Number
-  };
 
   ngOnInit() {
     let questions:any = []
@@ -74,6 +57,7 @@ export class RouteComponent implements OnInit{
       this.question = questions[0]
       this.nextQuestion()
     })
+
 
   }
 
