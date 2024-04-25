@@ -9,5 +9,10 @@
 </head>
 <body>
   <app-root></app-root>
+  <script type="text/javascript">
+    window.onbeforeunload = function() {
+      return "Did you save your stuff?"
+    }
+  </script>
 </body>
 </html>
