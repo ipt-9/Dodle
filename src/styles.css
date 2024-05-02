@@ -25,7 +25,3 @@ body, p, li, a {
   height: 400px;
   width: 100vw;
 }
-
-*{
-  transition: 0.1s;
-}

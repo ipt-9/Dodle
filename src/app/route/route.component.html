@@ -4,26 +4,32 @@
 
 <p>Go to the <span class="fw-bold">{{this.locationName}}</span>.<br>It is <span class="fw-bold">{{Math.round(locationService.distance).toLocaleString().replace('.', "'")}}m</span> away from your current location.</p>
 
-<label>{{question[currentQuestion]['question']}}</label>
+<label *ngIf="question != undefined">{{question[currentQuestion]['question']}}</label>
 <div id="map-canvas" class="my-2 w-100"></div>
 
 <!--Changed to "or" for debbunging :DDD -->
   <div *ngIf="question != undefined || this.locationService.distance<20">
     <form>
-      <div class="container">
-        <div class="row">
+      <div class="container p-0">
+        <div class="row w-100 position-relative">
           <button class="choice-button col" (click)="changeAnswer(multipleChoiseAnswers[0])" [disabled]="questionDone">{{multipleChoiseAnswers[0].ans}}</button>
           <button class="choice-button col" (click)="changeAnswer(multipleChoiseAnswers[1])" [disabled]="questionDone">{{multipleChoiseAnswers[1].ans}}</button>
           <div class="w-100"></div>
           <button class="choice-button col" (click)="changeAnswer(multipleChoiseAnswers[2])" [disabled]="questionDone">{{multipleChoiseAnswers[2].ans}}</button>
           <button class="choice-button col" (click)="changeAnswer(multipleChoiseAnswers[3])" [disabled]="questionDone">{{multipleChoiseAnswers[3].ans}}</button>
+          <table class="position-absolute h-100" [hidden]="!this.questionDone">
+            <tbody>
+            <tr>
+              <td class="align-middle text-center" id="gj">Good job!</td>
+            </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </form>
-    <div class="container">
+    <div class="container p-0">
       <input class="btn-primary w-100" [hidden]="this.questionDone" (click)="this.checkAnswer()" type="button" value="Submit">
       <input class="btn-primary w-100" [hidden]="!this.questionDone" (click)="nextQuestion()" type="button" value="Continue">
     </div>
-    <p *ngIf="this.questionDone">Correct answer!</p>
   </div>
 </div>

@@ -7,6 +7,7 @@ import {NgForOf, NgIf} from "@angular/common";
 import {FormsModule, NonNullableFormBuilder} from "@angular/forms";
 import {GoogleMap, GoogleMapsModule, MapAdvancedMarker, MapMarker} from "@angular/google-maps";
 import {mark} from "@angular/compiler-cli/src/ngtsc/perf/src/clock";
+import {HapticService} from "../haptic.service";
 
 @Component({
   selector: 'app-route',
@@ -32,15 +33,17 @@ export class RouteComponent implements OnInit{
   locationName: string | undefined;
   public id: number = 0;
   map:any;
+  coords:any
   markers:any[] = []
   mapOptions: google.maps.MapOptions = {}
 
 
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, protected locationService: LocationService) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, protected locationService: LocationService, private hapticService: HapticService) {
   }
 
 
   ngOnInit() {
+    this.coords = this.locationService.watchPosition()
     let questions:any = []
 
     //get ID
@@ -80,7 +83,6 @@ export class RouteComponent implements OnInit{
 
     // @ts-ignore
     this.map = new google.maps.Map(document.getElementById("map-canvas"), this.mapOptions)
-
   }
 
   nextQuestion(){
@@ -145,6 +147,8 @@ export class RouteComponent implements OnInit{
   checkAnswer(){
     if(this.currentAnswer){
       this.questionDone = true
+      document.getElementById('gj')
+      this.hapticService.longVibrate()
     }
   }
 

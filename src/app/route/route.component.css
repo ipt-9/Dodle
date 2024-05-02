@@ -82,3 +82,18 @@ h1, h2 {
   border: #007bff solid 0.4em;
   padding: 2em;
 }
+
+td{
+  animation: 0.5s ease-in fade-in forwards;
+  font-size: 2em;
+}
+
+@keyframes fade-in {
+  0%{
+    color: transparent;
+  }
+
+  100%{
+    color: #4CAF50;
+  }
+}

@@ -12,6 +12,7 @@ export class LocationService implements OnInit{
   public coords:GeolocationPosition[] = []
   public distance= 1000
   public rotation:any
+  marker:any
 
   constructor() { }
 
