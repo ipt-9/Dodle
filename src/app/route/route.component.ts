@@ -4,8 +4,9 @@ import {HttpClient} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LocationService} from "../location.service";
 import {NgForOf, NgIf} from "@angular/common";
-import {FormsModule} from "@angular/forms";
-import {Observable} from "rxjs";
+import {FormsModule, NonNullableFormBuilder} from "@angular/forms";
+import {GoogleMap, GoogleMapsModule, MapAdvancedMarker, MapMarker} from "@angular/google-maps";
+import {mark} from "@angular/compiler-cli/src/ngtsc/perf/src/clock";
 
 @Component({
   selector: 'app-route',
@@ -13,7 +14,10 @@ import {Observable} from "rxjs";
   imports: [
     NgForOf,
     FormsModule,
-    NgIf
+    NgIf,
+    GoogleMap,
+    MapAdvancedMarker,
+
   ],
   templateUrl: './route.component.html',
   styleUrl: './route.component.css'
@@ -26,8 +30,11 @@ export class RouteComponent implements OnInit{
   currentAnswer = false;
   questionDone = false;
   locationName: string | undefined;
-
   public id: number = 0;
+  map:any;
+  markers:any[] = []
+  mapOptions: google.maps.MapOptions = {}
+
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, protected locationService: LocationService) {
   }
@@ -58,6 +65,21 @@ export class RouteComponent implements OnInit{
       this.nextQuestion()
     })
 
+    //Map
+    this.mapOptions = {
+      center: { lat: 47, lng: 8},
+      zoom : 16,
+      zoomControl: true,
+      mapTypeControl: false,
+      mapTypeId: "satellite",
+      streetViewControl: false,
+      fullscreenControl: false,
+      gestureHandling: "cooperative",
+      mapId: "a222f34a16b3146a"
+    }
+
+    // @ts-ignore
+    this.map = new google.maps.Map(document.getElementById("map-canvas"), this.mapOptions)
 
   }
 
@@ -86,6 +108,32 @@ export class RouteComponent implements OnInit{
     this.locationService.stopWatch()
     this.locationService.watchPosition()
     this.locationService.distanceFromCurrentPosition({timestamp:0, coords: {latitude: this.question[this.currentQuestion]['lat'],longitude: this.question[this.currentQuestion]['lon'],accuracy: 0, altitude: 0, altitudeAccuracy: 0, speed:0, heading:0}})
+
+    //Map
+    this.map.panTo({ lat: parseFloat(this.question[this.currentQuestion]['lat']), lng: parseFloat(this.question[this.currentQuestion]['lon'])})
+
+    //Marker
+    let pinOptionActive = new google.maps.marker.PinElement({
+      background: "#0D6EFD",
+      glyphColor: "#0B54BA",
+      borderColor: "#0B54BA",
+      scale: 1
+    })
+
+    this.markers.push(new google.maps.marker.AdvancedMarkerElement({
+      map: this.map,
+      position: { lat: parseFloat(this.question[this.currentQuestion]['lat']), lng: parseFloat(this.question[this.currentQuestion]['lon'])},
+    }))
+
+    for(let i = 0; i < this.markers.length; i++){
+      let pinOption = new google.maps.marker.PinElement({
+        background: "#CBCBCB",
+        glyphColor: "#7D7D7D",
+        borderColor: "#7D7D7D",
+        scale: 0.5
+      })
+      this.markers[i].content = i == this.markers.length -1? pinOptionActive.element : pinOption.element
+    }
   }
 
   changeAnswer(answer: any){
@@ -115,4 +163,6 @@ export class RouteComponent implements OnInit{
 
   protected readonly Math = Math;
   protected readonly LocationService = LocationService;
+  protected readonly google = google;
+  protected readonly parseFloat = parseFloat;
 }
