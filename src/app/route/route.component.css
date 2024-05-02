@@ -4,7 +4,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   font-family: 'Arial', sans-serif;
   background-color: #f8f9fa;
 }
@@ -73,4 +72,13 @@ h1, h2 {
   .button-group {
     flex-direction: column;
   }
+}
+
+.main-container > h1{
+  font-size: 3em;
+}
+
+.main-container:first-child{
+  border: #007bff solid 0.4em;
+  padding: 2em;
 }
