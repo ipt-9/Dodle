@@ -12,6 +12,13 @@ import {HttpClient} from "@angular/common/http";
   styleUrl: './app.component.css',
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
-export class AppComponent{
-
+export class AppComponent implements OnInit{
+  ngOnInit() {
+    window.addEventListener("load", ()=>{
+      const loadingelement = document.getElementById("load")
+      if(loadingelement != null){
+        loadingelement.remove()
+      }
+    })
+  }
 }
