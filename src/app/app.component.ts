@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import {HashLocationStrategy, LocationStrategy, NgForOf} from "@angular/common";
@@ -13,11 +13,14 @@ import {HttpClient} from "@angular/common/http";
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class AppComponent implements OnInit{
+  constructor(private el: ElementRef) {
+  }
   ngOnInit() {
     window.addEventListener("load", ()=>{
-      const loadingelement = document.getElementById("load")
-      if(loadingelement != null){
-        loadingelement.remove()
+      const loadingelement = document.getElementsByClassName("load")
+
+      for(let i = 0; i < loadingelement.length; i++){
+        loadingelement[i].className += " fade-out"
       }
     })
   }

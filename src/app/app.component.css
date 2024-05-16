@@ -9,7 +9,7 @@ button{
   display: flex;
   align-items: center;
   z-index: 100;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgb(83, 83, 83);
 
   color: white;
 }
@@ -29,7 +29,7 @@ button{
 }
 
 .fade-out{
-  animation: 0.5s linear forwards fade;
+  animation: 1s linear forwards fade;
 }
 
 @keyframes fade {
