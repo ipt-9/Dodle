@@ -1,16 +1,37 @@
 .btn-custom {
-  color: #4a4a4a;
-  background-color: #f3d9b1;
+  color: #505050;
+  background-color: #FF7F50;
   border: none;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   padding: 0.5rem 1.5rem;
   font-size: 1.2rem;
   transition: background-color 0.3s ease;
-  border: solid #a18c6f 2px;
+  border: solid #D3D3D3 2px;
 }
 
-.underline{
-  text-decoration: underline #4a4a4a 3px;
+.underline {
+  text-decoration: underline #505050 3px;
 }
 
+body {
+  background-color: #F0F0F0;
+}
+
+/* Beispiel für die Verwendung der Primär- und Sekundärfarben */
+.title {
+  color: #008B8B;
+  text-align: center;
+  font-weight: bold;
+  border: 4px solid #008B8B;
+  border-radius: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px;
+  font-size: 2em;
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
+.secondary-accent {
+  color: #FF7F50;
+}

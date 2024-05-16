@@ -2,22 +2,30 @@
     max-width: 600px;
     margin: auto;
     padding: 20px;
+    background-color: #F0F0F0; /* Hintergrundfarbe */
 }
 
 h1 {
-    color: #007bff;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
+    color: #008B8B;
+    text-align: center;
+    font-weight: bold;
+    border: 4px solid #008B8B;
+    border-radius: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+    font-size: 2em;
+    font-weight: bolder;
 }
 
 h2 {
-    color: #343a40;
+    color: #505050; /* Dunkelgrau */
     font-size: 1.5rem;
     margin-bottom: 20px;
 }
 
 .route-title {
-    color: #007bff;
+    color: #008B8B; /* Primärfarbe */
     font-weight: bold;
 }
 
@@ -33,13 +41,13 @@ p {
 }
 
 .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+    background-color: #008B8B; /* Primärfarbe */
+    border-color: #008B8B; /* Primärfarbe */
 }
 
 .btn-info {
-    background-color: #17a2b8;
-    border-color: #17a2b8;
+    background-color: #FF7F50; /* Sekundärfarbe */
+    border-color: #FF7F50; /* Sekundärfarbe */
 }
 
 .mt-3 {
@@ -48,4 +56,22 @@ p {
 
 .text-center {
     text-align: center;
+}
+
+/* Akzentfarben */
+.light-gray {
+    color: #D3D3D3; /* Hellgrau */
+}
+
+.dark-gray {
+    color: #505050; /* Dunkelgrau */
+}
+
+img {
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
 }
