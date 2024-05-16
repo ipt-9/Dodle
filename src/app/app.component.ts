@@ -17,10 +17,10 @@ export class AppComponent implements OnInit{
   }
   ngOnInit() {
     window.addEventListener("load", ()=>{
-      const loadingelement = document.getElementsByClassName("load")
+      const loadingelement = document.getElementById("load")
 
-      for(let i = 0; i < loadingelement.length; i++){
-        loadingelement[i].className += " fade-out"
+      if(loadingelement!=null){
+        loadingelement.className += " fade-out"
       }
     })
   }

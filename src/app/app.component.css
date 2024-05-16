@@ -2,10 +2,6 @@ button{
   margin: 0.1em;
 }
 
-*{
-  background-color: black;
-}
-
 #load{
   width: 100vw;
   height: 100vh;
