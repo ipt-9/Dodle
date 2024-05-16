@@ -19,9 +19,3 @@ h1, h2, h3, h4, h5, h6 {
 body, p, li, a {
   font-family: 'BodyFont', sans-serif;
 }
-
-#map-canvas
-{
-  height: 400px;
-  width: 100vw;
-}

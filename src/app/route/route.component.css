@@ -1,3 +1,5 @@
+
+
 /* Grundlayout */
 .container {
   display: flex;
@@ -12,6 +14,10 @@
 h1, h2 {
   color: #007bff;
   text-align: center;
+}
+
+form{
+  margin-top: 0.5em;
 }
 
 /* Abstand und Zentrierung für das Koordinaten-Paragraph */
@@ -78,8 +84,13 @@ h1, h2 {
   font-size: 3em;
 }
 
+.main-container{
+  height: 100vh;
+}
+
 .main-container:first-child{
-  padding: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
 }
 
 td{
@@ -95,4 +106,40 @@ td{
   100%{
     color: #4CAF50;
   }
+}
+
+.main-container > div:nth-child(1){
+  height: 15vh;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.main-container > div:nth-child(1) h2{
+  font-size: 2em;
+  margin-top: 1em;
+}
+
+.main-container > div:nth-child(2){
+  height: 12.5vh;
+  overflow: scroll;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.main-container > div:nth-child(2) p {
+  width: 100%;
+  margin: 0;
+}
+
+.main-container > div:nth-child(3){
+  height: 40vh;
+}
+
+.main-container > div:nth-child(4){
+  display: flex;
+  align-items: center;
+  height: 27vh;
 }

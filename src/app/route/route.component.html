@@ -1,24 +1,29 @@
 <div class="main-container">
-<h1>Route - {{this.routeName}}</h1>
-<h2>Question - {{this.locationName}}</h2>
+  <div>
+    <h2><strong>{{this.locationName}}</strong></h2>
+  </div>
 
-<p>Go to the <span class="fw-bold">{{this.locationName}}</span>.<br>It is <span class="fw-bold">{{Math.round(this.distance).toLocaleString().replace('.', "'")}}m</span> away from your current location.</p>
+  <div>
+    <p>Go to the <span class="fw-bold">{{this.locationName}}</span>.</p>
+  </div>
 
-<label *ngIf="question != undefined">{{question[currentQuestion]['question']}}</label>
-<div id="map-canvas" class="my-2 w-100"></div>
+  <div id="map-canvas" class="my-2 w-100"></div>
 
-<!--Changed to "or" for debbunging :DDD -->
-  <div *ngIf="question != undefined || this.distance<20">
-    <form>
-      <div class="container p-0">
-        <div class="row w-100 position-relative">
-          <button class="choice-button col" id="Answerbutton-0" (click)="changeAnswer(multipleChoiseAnswers[0], 0)" [disabled]="questionDone">{{multipleChoiseAnswers[0].ans}}</button>
-          <button class="choice-button col" id="Answerbutton-1" (click)="changeAnswer(multipleChoiseAnswers[1], 1)" [disabled]="questionDone">{{multipleChoiseAnswers[1].ans}}</button>
-          <div class="w-100"></div>
-          <button class="choice-button col" id="Answerbutton-2" (click)="changeAnswer(multipleChoiseAnswers[2], 2)" [disabled]="questionDone">{{multipleChoiseAnswers[2].ans}}</button>
-          <button class="choice-button col" id="Answerbutton-3" (click)="changeAnswer(multipleChoiseAnswers[3], 3)" [disabled]="questionDone">{{multipleChoiseAnswers[3].ans}}</button>
+  <!--Changed to "or" for debbunging :DDD -->
+  <div>
+    <div *ngIf="question != undefined || this.distance<20">
+      <label *ngIf="question != undefined">{{question[currentQuestion]['question']}}</label>
+      <form>
+        <div class="container p-0">
+          <div class="row w-100 position-relative">
+            <button class="choice-button col" id="Answerbutton-0" (click)="changeAnswer(multipleChoiseAnswers[0], 0)" [disabled]="questionDone">{{multipleChoiseAnswers[0].ans}}</button>
+            <button class="choice-button col" id="Answerbutton-1" (click)="changeAnswer(multipleChoiseAnswers[1], 1)" [disabled]="questionDone">{{multipleChoiseAnswers[1].ans}}</button>
+            <div class="w-100"></div>
+            <button class="choice-button col" id="Answerbutton-2" (click)="changeAnswer(multipleChoiseAnswers[2], 2)" [disabled]="questionDone">{{multipleChoiseAnswers[2].ans}}</button>
+            <button class="choice-button col" id="Answerbutton-3" (click)="changeAnswer(multipleChoiseAnswers[3], 3)" [disabled]="questionDone">{{multipleChoiseAnswers[3].ans}}</button>
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </div>

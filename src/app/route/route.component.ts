@@ -9,6 +9,7 @@ import {GoogleMap, GoogleMapsModule, MapAdvancedMarker, MapMarker} from "@angula
 import {mark} from "@angular/compiler-cli/src/ngtsc/perf/src/clock";
 import {HapticService} from "../haptic.service";
 import {Location} from "../location";
+import {routes} from "../app.routes";
 
 @Component({
   selector: 'app-route',
@@ -100,6 +101,10 @@ export class RouteComponent implements OnInit{
 
   nextQuestion(){
     this.currentQuestion++
+    if(this.currentQuestion == this.question.length-1){
+      this.router.navigate(["/finish/"+this.id])
+    }
+
     this.currentAnswer = false
     this.questionDone = false
 
@@ -149,7 +154,7 @@ export class RouteComponent implements OnInit{
       })
       this.markers[i].content = i == this.markers.length -1 ? pinOptionActive.element : pinOption.element
     }
-    
+
     // Reset button colors
     for(let i = 0; i < this.multipleChoiseAnswers.length; i++){
       const element = document.getElementById(`Answerbutton-${i}`);
@@ -169,7 +174,7 @@ export class RouteComponent implements OnInit{
       element.style.backgroundColor = "green";
       }
       this.hapticService.longVibrate()
-      
+
       setTimeout(() => {
         // Code zum Übergehen zum nächsten Schritt oder zur nächsten Frage
         // Zum Beispiel könnte hier eine Methode aufgerufen werden, die die Logik zum Wechseln der Frage enthält
