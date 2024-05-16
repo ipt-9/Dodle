@@ -42,7 +42,7 @@ export class RouteComponent implements OnInit{
   distance: number = 9999;
   LiveMarker: google.maps.marker.AdvancedMarkerElement = new google.maps.marker.AdvancedMarkerElement;
   pinElement = document.createElement('div')
-
+  wrongCounts = 0
 
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private hapticService: HapticService) {
@@ -102,7 +102,7 @@ export class RouteComponent implements OnInit{
   nextQuestion(){
     this.currentQuestion++
     if(this.currentQuestion == this.question.length-1){
-      this.router.navigate(["/finish/"+this.id])
+      this.router.navigate(["/finish/"+this.id], {queryParams: {"wrongCounts":this.wrongCounts}})
     }
 
     this.currentAnswer = false
@@ -191,6 +191,7 @@ export class RouteComponent implements OnInit{
         element.style.backgroundColor = "lightgrey";
       }
       console.log(element);
+      this.wrongCounts++
     }
   }
 

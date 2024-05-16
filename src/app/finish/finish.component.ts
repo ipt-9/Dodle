@@ -15,7 +15,7 @@ export class FinishComponent implements OnInit{
   title: string = "Pagename not found"
   id: number = 0
 
-  constructor(private route: ActivatedRoute, private http: HttpClient) {
+  constructor(protected route: ActivatedRoute, private http: HttpClient) {
   }
 
   ngOnInit() {
