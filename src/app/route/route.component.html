@@ -2,13 +2,13 @@
 <h1>Route - {{this.routeName}}</h1>
 <h2>Question - {{this.locationName}}</h2>
 
-<p>Go to the <span class="fw-bold">{{this.locationName}}</span>.<br>It is <span class="fw-bold">{{Math.round(locationService.distance).toLocaleString().replace('.', "'")}}m</span> away from your current location.</p>
+<p>Go to the <span class="fw-bold">{{this.locationName}}</span>.<br>It is <span class="fw-bold">{{Math.round(this.distance).toLocaleString().replace('.', "'")}}m</span> away from your current location.</p>
 
 <label *ngIf="question != undefined">{{question[currentQuestion]['question']}}</label>
 <div id="map-canvas" class="my-2 w-100"></div>
 
 <!--Changed to "or" for debbunging :DDD -->
-  <div *ngIf="question != undefined || this.locationService.distance<20">
+  <div *ngIf="question != undefined || this.distance<20">
     <form>
       <div class="container p-0">
         <div class="row w-100 position-relative">

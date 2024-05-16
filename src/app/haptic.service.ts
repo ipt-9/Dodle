@@ -15,6 +15,10 @@ export class HapticService {
     navigator.vibrate(1000)
   }
 
+  successVibrate(){
+    navigator.vibrate([100, 150, 100, 150, 450])
+  }
+
   vibrate(time: number){
     navigator.vibrate(time)
   }
