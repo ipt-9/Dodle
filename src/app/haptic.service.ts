@@ -7,20 +7,29 @@ export class HapticService {
 
   constructor() { }
 
+  iOS() {
+    return [
+        'iPad Simulator',
+        'iPhone Simulator',
+        'iPod Simulator',
+        'iPad',
+        'iPhone',
+        'iPod'
+      ].includes(navigator.platform)
+      // iPad on iOS 13 detection
+      || (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+  }
+
   shortVibrate(){
-    navigator.vibrate(250)
+    if(!this.iOS()){
+      navigator.vibrate(250)
+    }
   }
 
   longVibrate(){
-    navigator.vibrate(1000)
-  }
-
-  successVibrate(){
-    navigator.vibrate([100, 150, 100, 150, 450])
-  }
-
-  vibrate(time: number){
-    navigator.vibrate(time)
+    if(!this.iOS()){
+      navigator.vibrate(1000)
+    }
   }
 
   playSound(name:string){

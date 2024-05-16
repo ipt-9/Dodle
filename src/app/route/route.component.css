@@ -56,6 +56,7 @@ form{
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-size: 4vw;
 }
 
 .choice-button:hover {
