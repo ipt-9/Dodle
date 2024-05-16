@@ -11,10 +11,10 @@
 
   <!--Changed to "or" for debbunging :DDD -->
   <div>
-    <div *ngIf="question != undefined || this.distance<20">
+    <div *ngIf="question != undefined || this.distance<20" class="w-100">
       <label *ngIf="question != undefined">{{question[currentQuestion]['question']}}</label>
       <form>
-        <div class="container p-0">
+        <div class="container p-0" style="margin: auto">
           <div class="row w-100 position-relative">
             <button class="choice-button col" id="Answerbutton-0" (click)="changeAnswer(multipleChoiseAnswers[0], 0)" [disabled]="questionDone">{{multipleChoiseAnswers[0].ans}}</button>
             <button class="choice-button col" id="Answerbutton-1" (click)="changeAnswer(multipleChoiseAnswers[1], 1)" [disabled]="questionDone">{{multipleChoiseAnswers[1].ans}}</button>
