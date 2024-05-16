@@ -79,7 +79,6 @@ h1, h2 {
 }
 
 .main-container:first-child{
-  border: #007bff solid 0.4em;
   padding: 2em;
 }
 
