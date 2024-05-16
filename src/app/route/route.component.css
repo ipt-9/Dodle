@@ -1,5 +1,3 @@
-
-
 /* Grundlayout */
 .container {
   display: flex;
@@ -7,13 +5,28 @@
   align-items: center;
   justify-content: center;
   font-family: 'Arial', sans-serif;
-  background-color: #f8f9fa;
+  background-color: #F0F0F0; /* Off-White */
 }
 
 /* Überschriften */
 h1, h2 {
-  color: #007bff;
+  color: #008B8B; /* Dunkles Cyan */
   text-align: center;
+  font-weight: bold;
+  border: 4px solid #008B8B; /* Blau */
+  border-radius: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px;
+  font-size: 2em; /* Increase font size */
+  font-weight: bolder; /* Make font thicker */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  h1, h2 {
+    font-size: 1.5em; /* Decrease font size for smaller screens */
+  }
 }
 
 form{
@@ -35,7 +48,7 @@ form{
 
 /* Stilisierte Buttons für die Auswahl */
 .choice-button {
-  background-color: #007bff;
+  background-color: #FF7F50; /* Korallenrot */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -46,11 +59,11 @@ form{
 }
 
 .choice-button:hover {
-  background-color: #0056b3;
+  background-color: #FF6347; /* Dunkleres Korallenrot */
 }
 
 .choice-button[disabled] {
-  background-color: #ccc;
+  background-color: #D3D3D3; /* Hellgrau */
   cursor: not-allowed;
 }
 
@@ -58,8 +71,8 @@ form{
 .answer-button {
   appearance: none;
   background-color: transparent;
-  border: 2px solid #007bff;
-  color: #007bff;
+  border: 2px solid #008B8B; /* Dunkles Cyan */
+  color: #008B8B; /* Dunkles Cyan */
   padding: 10px 20px;
   margin: 5px;
   border-radius: 5px;
@@ -69,7 +82,7 @@ form{
 
 .answer-button:checked,
 .answer-button:hover {
-  background-color: #007bff;
+  background-color: #008B8B; /* Dunkles Cyan */
   color: white;
 }
 
@@ -104,7 +117,7 @@ td{
   }
 
   100%{
-    color: #4CAF50;
+    color: #505050; /* Dunkelgrau */
   }
 }
 
