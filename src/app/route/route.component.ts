@@ -159,7 +159,7 @@ export class RouteComponent implements OnInit{
     for(let i = 0; i < this.multipleChoiseAnswers.length; i++){
       const element = document.getElementById(`Answerbutton-${i}`);
       if (element !== null) {
-        element.style.backgroundColor = "#0D6EFD";
+        element.style.backgroundColor = "#FF7F50";
       }
     }
 
@@ -171,7 +171,7 @@ export class RouteComponent implements OnInit{
       // Change button color to green
       const element = document.getElementById(`Answerbutton-${id}`);
       if (element !== null) {
-      element.style.backgroundColor = "green";
+      element.style.backgroundColor = "#006400"; // ein dunkleres grün, sanft und moosig
       }
       this.hapticService.longVibrate()
 
@@ -188,7 +188,7 @@ export class RouteComponent implements OnInit{
       this.hapticService.shortVibrate();
       const element = document.getElementById(`Answerbutton-${id}`);
       if (element !== null) {
-        element.style.backgroundColor = "red";
+        element.style.backgroundColor = "lightgrey";
       }
       console.log(element);
     }
