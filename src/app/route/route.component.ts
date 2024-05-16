@@ -43,6 +43,9 @@ export class RouteComponent implements OnInit{
   LiveMarker: google.maps.marker.AdvancedMarkerElement = new google.maps.marker.AdvancedMarkerElement;
   pinElement = document.createElement('div')
   wrongCounts = 0
+  startTime = 0
+  endTime = 0
+  calculatedTime = 0
 
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private hapticService: HapticService) {
@@ -50,6 +53,8 @@ export class RouteComponent implements OnInit{
 
 
   ngOnInit() {
+    this.startTime = new Date().getTime()
+
     this.pinElement.className = "bg-primary rounded-circle"
     this.pinElement.setAttribute("style", "border: solid white 1px; padding: 4px")
     this.LiveMarker = new google.maps.marker.AdvancedMarkerElement({
@@ -102,7 +107,9 @@ export class RouteComponent implements OnInit{
   nextQuestion(){
     this.currentQuestion++
     if(this.currentQuestion == this.question.length-1){
-      this.router.navigate(["/finish/"+this.id], {queryParams: {"wrongCounts":this.wrongCounts}})
+      this.endTime = new Date().getTime()
+      this.calculatedTime = this.endTime - this.startTime
+      this.router.navigate(["/finish/"+this.id], {queryParams: {"wrongCounts":this.wrongCounts, "time": this.calculatedTime}})
     }
 
     this.currentAnswer = false

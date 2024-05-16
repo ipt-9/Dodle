@@ -2,6 +2,12 @@
     <h1> Congratulations! 🎉</h1>
     <h2>You finished the <span class="route-title">{{ title }}</span> route</h2>
     <h2>Wrong guesses: {{wrongCounts}}</h2>
+    <h2>
+      <span>{{this.time.getUTCHours()}}h</span>&nbsp;
+      <span>{{this.time.getMinutes()}}m</span>&nbsp;
+      <span>{{this.time.getSeconds()}}s</span>&nbsp;
+      <span>{{this.time.getMilliseconds()}}ms</span>
+    </h2>
     <p>We hope you had fun exploring and learning new things! 🚀✨</p>
     <p>
         <a routerLink="/" class="btn btn-primary mt-3">🏠 Go to homepage</a>
