@@ -1,13 +1,42 @@
-/* You can add global styles to this file, and also import other style files */
-.card-img{
+.card-img {
   opacity: 0;
 }
 
-.bottom{
+.bottom {
   position: absolute !important;
   bottom: 0 !important;
 }
 
-.bold{
+.bold {
   font-weight: bold;
+}
+
+img.d-block {
+  max-width: 80%;
+  height: auto;
+}
+
+h1 {
+  color: #008B8B; /* Dunkles Cyan */
+  text-align: center;
+  font-weight: bold;
+  border: 4px solid #008B8B; /* Blau */
+  border-radius: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 10px;
+  font-size: 2em; /* Increase font size */
+  font-weight: bolder; /* Make font thicker */
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.8em;
+  color: #FF7F50; /* Korallenrot */
+  font-weight: bold;
+  padding-top: 5%;
+}
+
+body {
+  background-color: #F0F0F0; /* Background color: Off-White */
 }
