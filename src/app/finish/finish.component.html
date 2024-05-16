@@ -1,14 +1,14 @@
 <div class="container text-center">
     <h1> Congratulations! 🎉</h1>
     <h2>You finished the <span class="route-title">{{ title }}</span> route</h2>
-    <h2>Wrong guesses: {{this.route.snapshot.queryParamMap.get("wrongCounts")}}</h2>
+    <h2>Wrong guesses: {{wrongCounts}}</h2>
     <p>We hope you had fun exploring and learning new things! 🚀✨</p>
     <p>
         <a routerLink="/" class="btn btn-primary mt-3">🏠 Go to homepage</a>
     </p>
     <p>
         <a target="_blank"
-           href="https://twitter.com/intent/tweet?text=Hey%20Guys%F0%9F%98%83!!!!%0AI%20just%20finished%20the%20{{ title }}%20route%20on%20Dodle!!!!!!%20%F0%9F%98%8A%F0%9F%98%8A%F0%9F%98%8A%0ATry%20it%20out%20here%F0%9F%98%8D%F0%9F%91%89%20https%3A%2F%2Fdodle-bmsd21a.bbzwinf.ch%0A%0A%E2%9C%A8%E2%9C%A8And%20don't%20forget%20to%20be%20yourself%20and%20sparkle%20on%E2%9C%A8%E2%9C%A8"
+           href="https://twitter.com/intent/tweet?text=Hey%20Guys%F0%9F%98%83!!!!%0AI%20just%20finished%20the%20{{title}}%20route%20on%20Dodle%20with%20{{wrongCounts}}%20wrong%20guesses!!!!!!%20%3A33%20%F0%9F%98%8A%F0%9F%98%8A%F0%9F%98%8A%0ATry%20it%20out%20here%F0%9F%98%8D%F0%9F%91%89%20https%3A%2F%2Fdodle-bmsd21a.bbzwinf.ch%0A%0A%E2%9C%A8%E2%9C%A8And%20don't%20forget%20to%20be%20yourself%20and%20sparkle%20on%20X3%20%3A3%E2%9C%A8%E2%9C%A8"
            class="btn btn-info mt-3">
             🐦 Tweet
         </a>
