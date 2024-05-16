@@ -30,6 +30,7 @@ export class RouteComponent implements OnInit{
   multipleChoiseAnswers: any = []
   currentAnswer = false;
   questionDone = false;
+  questionwrong = false;
   locationName: string | undefined;
   public id: number = 0;
   map:any;
@@ -136,19 +137,42 @@ export class RouteComponent implements OnInit{
       })
       this.markers[i].content = i == this.markers.length -1? pinOptionActive.element : pinOption.element
     }
-  }
-
-  changeAnswer(answer: any){
-    if(answer.isCorrect){
-      this.currentAnswer = true;
+    
+    // Reset button colors
+    for(let i = 0; i < this.multipleChoiseAnswers.length; i++){
+      const element = document.getElementById(`Answerbutton-${i}`);
+      if (element !== null) {
+        element.style.backgroundColor = "#0D6EFD";
+      }
     }
   }
 
-  checkAnswer(){
-    if(this.currentAnswer){
+  changeAnswer(answer: any, id: number){
+    if(answer.isCorrect){
       this.questionDone = true
-      document.getElementById('gj')
+      // Change button color to green
+      const element = document.getElementById(`Answerbutton-${id}`);
+      if (element !== null) {
+      element.style.backgroundColor = "green";
+      }
       this.hapticService.longVibrate()
+      
+      setTimeout(() => {
+        // Code zum Übergehen zum nächsten Schritt oder zur nächsten Frage
+        // Zum Beispiel könnte hier eine Methode aufgerufen werden, die die Logik zum Wechseln der Frage enthält
+        this.nextQuestion();
+      }, 1000);
+    }
+    else{
+      this.questionDone = false;
+      this.questionwrong = true;
+      this.hapticService.shortVibrate();
+      this.hapticService.shortVibrate();
+      const element = document.getElementById(`Answerbutton-${id}`);
+      if (element !== null) {
+        element.style.backgroundColor = "red";
+      }
+      console.log(element);
     }
   }
 

@@ -12,24 +12,13 @@
     <form>
       <div class="container p-0">
         <div class="row w-100 position-relative">
-          <button class="choice-button col" (click)="changeAnswer(multipleChoiseAnswers[0])" [disabled]="questionDone">{{multipleChoiseAnswers[0].ans}}</button>
-          <button class="choice-button col" (click)="changeAnswer(multipleChoiseAnswers[1])" [disabled]="questionDone">{{multipleChoiseAnswers[1].ans}}</button>
+          <button class="choice-button col" id="Answerbutton-0" (click)="changeAnswer(multipleChoiseAnswers[0], 0)" [disabled]="questionDone">{{multipleChoiseAnswers[0].ans}}</button>
+          <button class="choice-button col" id="Answerbutton-1" (click)="changeAnswer(multipleChoiseAnswers[1], 1)" [disabled]="questionDone">{{multipleChoiseAnswers[1].ans}}</button>
           <div class="w-100"></div>
-          <button class="choice-button col" (click)="changeAnswer(multipleChoiseAnswers[2])" [disabled]="questionDone">{{multipleChoiseAnswers[2].ans}}</button>
-          <button class="choice-button col" (click)="changeAnswer(multipleChoiseAnswers[3])" [disabled]="questionDone">{{multipleChoiseAnswers[3].ans}}</button>
-          <table class="position-absolute h-100" [hidden]="!this.questionDone">
-            <tbody>
-            <tr>
-              <td class="align-middle text-center" id="gj">Good job!</td>
-            </tr>
-            </tbody>
-          </table>
+          <button class="choice-button col" id="Answerbutton-2" (click)="changeAnswer(multipleChoiseAnswers[2], 2)" [disabled]="questionDone">{{multipleChoiseAnswers[2].ans}}</button>
+          <button class="choice-button col" id="Answerbutton-3" (click)="changeAnswer(multipleChoiseAnswers[3], 3)" [disabled]="questionDone">{{multipleChoiseAnswers[3].ans}}</button>
         </div>
       </div>
     </form>
-    <div class="container p-0">
-      <input class="btn-primary w-100" [hidden]="this.questionDone" (click)="this.checkAnswer()" type="button" value="Submit">
-      <input class="btn-primary w-100" [hidden]="!this.questionDone" (click)="nextQuestion()" type="button" value="Continue">
-    </div>
   </div>
 </div>
