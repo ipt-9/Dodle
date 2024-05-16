@@ -18,6 +18,7 @@ export class RoutedetailComponent implements OnInit{
   longDesc: string|undefined;
   image: string|undefined;
   distance: number|undefined;
+  questions: any[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
   }
@@ -37,9 +38,15 @@ export class RoutedetailComponent implements OnInit{
           this.longDesc = data[i]['longDesc']
           this.image = data[i]['image']
           this.distance = data[i]['distance']
-
         }
       }
+    })
+
+    //get Question Data
+    this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php?id="+this.id).subscribe(data=>{
+      this.questions?.push(data)
+      // @ts-ignore
+      this.questions = this.questions[0]
     })
   }
 }
