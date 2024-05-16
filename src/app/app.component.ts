@@ -13,5 +13,5 @@ import {HttpClient} from "@angular/common/http";
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}]
 })
 export class AppComponent{
-  title = "hello"
+
 }
