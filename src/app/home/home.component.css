@@ -62,3 +62,11 @@ body {
   border: none;
   margin: 0;
 }
+
+#help{
+  max-width: 21em;
+}
+
+#routeContainer{
+  min-height: 40vh;
+}

@@ -4,7 +4,7 @@
 <input id="searchbar" placeholder="Search..." type="text"  (keyup.enter)="search()" (input)="search()" [(ngModel)]="text">
 <hr>
 <div class="container mt-5">
-  <div class="row">
+  <div class="row" id="routeContainer">
     <div *ngFor="let route of routes[0]" class="col-lg-4 col-md-6 mb-4">
       <a *ngIf="route['available'] == 1" routerLink="/routedetail/{{route['id']}}" class="text-decoration-none">
         <div class="card bg-dark text-white h-100" style="background: linear-gradient(transparent 0%, black 100%), url('/assets/citylogo/{{route['image']}}.jpg'); background-size: contain">
@@ -40,4 +40,11 @@
       </ol>
     </div>
   </div>
+</div>
+<hr>
+<div class="mx-auto mb-3" id="help">
+  <h1 class="text-center">need help?</h1>
+  <p>Need help? We're here for you! Contact us via email for any questions or assistance. We'll respond quickly to provide the support you need.</p>
+  <a class="text-center mx-auto d-block" href="mailto:joel_erni1@sluz.ch?subject=Dodle%20Problem">Email us!</a>
+  <a class="text-center mx-auto d-block" routerLink="faq">faq</a>
 </div>
