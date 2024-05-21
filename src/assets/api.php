@@ -44,6 +44,7 @@ if($id != NULL and $query == NULL){
       				$response[$i]['longDesc'] = $row['longDesc'];
       				$response[$i]['image'] = $row['image'];
       				$response[$i]['distance'] = $row['distance'];
+      				$response[$i]['available'] = $row['available'];
       				$i++;
       			}
       			echo json_encode($response);
@@ -67,6 +68,7 @@ if($id != NULL and $query == NULL){
 				$response[$i]['longDesc'] = $row['longDesc'];
 				$response[$i]['image'] = $row['image'];
 				$response[$i]['distance'] = $row['distance'];
+				$response[$i]['available'] = $row['available'];
 				$i++;
 			}
 			echo json_encode($response);
