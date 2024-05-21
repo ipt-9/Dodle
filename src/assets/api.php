@@ -3,8 +3,9 @@ $con = mysqli_connect("localhost:3306", "dodle", "SamsungSmartFridge", "dodle");
 $response = array();
 
 $id = htmlspecialchars($_GET["id"]);
+$query = htmlspecialchars($_GET["q"]);
 
-if($id != NULL){
+if($id != NULL and $query == NULL){
 	if($con){
 		$sql = "SELECT * FROM Questions where fk_RouteId = " . $id;
 		$result = mysqli_query($con, $sql);
@@ -28,6 +29,29 @@ if($id != NULL){
 	else{
 		echo "Database connetion failed";
 	}
+}elseif($query != NULL){
+  if($con){
+  		$sql = "SELECT * FROM Routes WHERE name Like '%".$query."%'";
+  		$result = mysqli_query($con, $sql);
+  		if($result)
+      		{
+      			header("Access-Control-Allow-Origin: *");
+      			$i=0;
+      			while($row = mysqli_fetch_assoc($result)){
+      				$response[$i]['id'] = $row['_id'];
+      				$response[$i]['name'] = $row['name'];
+      				$response[$i]['desc'] = $row['desc'];
+      				$response[$i]['longDesc'] = $row['longDesc'];
+      				$response[$i]['image'] = $row['image'];
+      				$response[$i]['distance'] = $row['distance'];
+      				$i++;
+      			}
+      			echo json_encode($response);
+      		}
+      	}
+      	else{
+      		echo "Database connetion failed";
+      	}
 }else{
 	if($con){
 		$sql = "SELECT * FROM Routes";

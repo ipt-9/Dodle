@@ -16,7 +16,7 @@ img.d-block {
   height: auto;
 }
 
-h1 {
+h1{
   color: #008B8B; /* Dunkles Cyan */
   text-align: center;
   font-weight: bold;
@@ -39,4 +39,26 @@ h2 {
 
 body {
   background-color: #F0F0F0; /* Background color: Off-White */
+}
+
+#searchbar{
+  margin: auto;
+  display: block;
+  width: 15em;
+}
+
+#notFound{
+
+  max-width: 21em;
+  margin: auto;
+
+}
+
+#notFound p{
+  text-align: center;
+}
+
+#notFound h1{
+  border: none;
+  margin: 0;
 }

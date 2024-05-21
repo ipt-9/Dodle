@@ -14,5 +14,6 @@ export const routes: Routes = [
   {path: 'routedetail/:id', component: RoutedetailComponent},
   {path: 'finish/:id', component: FinishComponent},
   { path: '', component: HomeComponent},
+  { path: ':q', component: HomeComponent},
   {path: '**', component: NotFoundPageComponent},
 ];

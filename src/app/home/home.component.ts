@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {RouterLink} from "@angular/router";
+import {ActivatedRoute, RouterLink} from "@angular/router";
 import {routes} from "../app.routes";
 import {HttpClient} from "@angular/common/http";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,8 @@ import {NgForOf} from "@angular/common";
   imports: [
     RouterLink,
     NgForOf,
+    FormsModule,
+    NgIf,
 
   ],
   templateUrl: './home.component.html',
@@ -18,15 +21,23 @@ import {NgForOf} from "@angular/common";
 export class HomeComponent implements OnInit{
   routes: any[] = [];
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, protected route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php").subscribe(data=>{
-      this.routes.push(data)
-    })
-    console.log(this.routes)
+      this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php").subscribe(data=>{
+        this.routes.push(data)
+      })
   }
 
+
+
+  search(){
+    this.http.get<any>("https://dodle-bmsd21a.bbzwinf.ch/assets/api.php?q="+this.text).subscribe(data=>{
+      this.routes = []
+      this.routes.push(data)
+    })
+  }
   protected readonly JSON = JSON;
+  text: any;
 }
